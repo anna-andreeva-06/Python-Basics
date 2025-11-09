@@ -1,0 +1,207 @@
+-- Задание 1 из 9
+
+# Списки пользователей мобильных и стационарных устройств
+mobile_users = ['C1078', 'C1023', 'C1045','C1099', 'C1133']
+desktop_users = ['C1150', 'C1099', 'C1201', 'C1133', 'C1188', 'C1257']
+
+# Объединяем два списка
+all_users = mobile_users + desktop_users
+
+# Получаем множество уникальных пользователей
+unique_users = set(all_users)
+
+# Считаем количество уникальных пользователей
+total_users = len(unique_users)
+
+print(f'Количество уникальных пользователей: {total_users}')
+
+
+
+-- Задание 2 из 9
+
+# Стоимость заказов, оформленных с мобильных и стационарных устройств
+mobile_orders = [990, 1150, 820, 890, 1350, 750, 1040, 1280]
+desktop_orders = [1010, 1327, 1370, 920, 890, 1390, 790, 860, 970, 1250]
+
+# Вычисляем средние значения
+mobile_avg = sum(mobile_orders) / len(mobile_orders)
+desktop_avg = sum(desktop_orders) / len(desktop_orders)
+
+# Средние значения (для наглядности — можно убрать после проверки)
+print(f'Средний чек для мобильных устройств: {mobile_avg:.2f} рублей.')
+print(f'Средний чек для стационарных устройств: {desktop_avg:.2f} рублей.')
+
+# Сравниваем средние значения
+if mobile_avg > desktop_avg:
+    print('Средний чек в случае мобильных устройств выше.')
+elif desktop_avg > mobile_avg:
+    print('Средний чек в случае стационарных устройств выше.')
+else:
+    print('Средние чеки равны.')
+
+
+
+-- Задание 3 из 9
+
+# Стоимость заказов, оформленных с мобильных и стационарных устройств
+mobile_orders = [990, 1150, 820, 890, 1350, 750, 1040, 1280]
+desktop_orders = [1010, 1327, 1370, 920, 890, 1390, 790, 860, 970, 1250]
+
+# Считаем количество заказов выше 1000 рублей для мобильных устройств
+mobile_count = 0
+# Создаём цикл, подсчитывающий количество дорогих заказов для мобильных устройств
+for order in mobile_orders:
+    if order > 1000:
+        mobile_count += 1
+
+# Считаем количество заказов выше 1000 рублей для стационарных устройств
+desktop_count = 0
+# Создаём цикл, подсчитывающий количество дорогих заказов для стационарных устройств
+for order in desktop_orders:
+    if order > 1000:
+        desktop_count += 1
+
+# Выводим количество дорогих заказов
+print(f'Количество дорогих заказов для мобильных устройств: {mobile_count}')
+print(f'Количество дорогих заказов для стационарных устройств: {desktop_count}')
+
+
+
+-- Задание 4 из 9
+
+# Стоимость заказов, оформленных с мобильных и стационарных устройств
+mobile_orders = [990, 1150, 820, 890, 1350, 750, 1040, 1280]
+desktop_orders = [1010, 1327, 1370, 920, 890, 1390, 790, 860, 970, 1250]
+
+# Создайте функцию count_expensive_orders(), которая принимает список заказов и сумму,
+# а возвращает количество заказов, превышающих эту сумму
+def count_expensive_orders(orders, threshold):
+    count = 0
+    for order in orders:
+        if order > threshold:
+            count += 1
+    return count
+
+# Используйте функцию для подсчёта дорогих заказов для каждого типа устройств
+mobile_count = count_expensive_orders(mobile_orders, 1000)
+desktop_count = count_expensive_orders(desktop_orders, 1000)
+
+# Выводим результаты
+print(f'Количество дорогих заказов для мобильных устройств: {mobile_count}')
+print(f'Количество дорогих заказов для стационарных устройств: {desktop_count}')
+
+
+
+-- Задание 5 из 9
+
+# Стоимость заказов, оформленных с мобильных и стационарных устройств
+mobile_orders = [990, 1150, 820, 890, 1350, 750, 1040, 1280]
+desktop_orders = [1010, 1327, 1370, 920, 890, 1390, 790, 860, 1250]
+
+# Определим функцию count_expensive_orders()
+def count_expensive_orders(orders, threshold):
+    count = 0
+    for order in orders:
+        if order > threshold:
+            count = count + 1
+    ratio = count / len(orders)
+    return count, ratio
+
+# Используем функцию
+mobile_count, mobile_ratio = count_expensive_orders(mobile_orders, 1000)
+desktop_count, desktop_ratio = count_expensive_orders(desktop_orders, 1000)
+
+# Выводим результаты
+print(f'Количество дорогих заказов для мобильных устройств: {mobile_count}')
+print(f'Доля дорогих заказов для мобильных устройств: {mobile_ratio:.2f}')
+print(f'Количество дорогих заказов для стационарных устройств: {desktop_count}')
+print(f'Доля дорогих заказов для стационарных устройств: {desktop_ratio:.2f}')
+
+
+
+-- Задание 6 из 9
+
+# Исходные данные
+cities = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск', 'Екатеринбург']
+total_users = [1250, 857, 613, 405, 580]
+buyers = [322, 213, 157, 81, 125]
+
+# Найдите долю пользователей, оформивших заказ
+for city, total, buyer in zip(cities, total_users, buyers):
+    conversion = buyer / total  # Доля = покупатели / общее количество
+    print(f'{city}: доля пользователей, оформивших заказ {conversion:.1%}')
+
+
+
+-- Задание 7 из 9
+
+# Исходные данные
+cities = ['Москва', 'Санкт-Петербург', 'Казань', 'Новосибирск', 'Екатеринбург']
+total_users = [1250, 857, 613, 405, 580]
+buyers = [322, 213, 157, 81, 125]
+
+# Создайте пустой список для доли пользователей, оформивших заказ
+conversions = []
+
+# Для каждого города посчитайте долю и сохраните в список conversions
+for city, total, buyer in zip(cities, total_users, buyers):
+    conversion = buyer / total
+    conversions.append(conversion)
+
+# Найдите максимальное значение доли
+max_conversion = max(conversions)
+
+# Найдите индекс максимального значения доли
+max_index = conversions.index(max_conversion)
+
+# Используя этот индекс, получите название города с максимальной долей
+top_city = cities[max_index]
+
+# Выведите город и значение максимальной доли
+print(f'Город с максимальной долей пользователей, оформивших заказ: {top_city} — {max_conversion:.1%}')
+
+
+
+-- Задание 8 из 9
+
+# Исходные строки
+products_str = "яблоко,банан,молоко,хлеб,сыр,помидор,картошка,йогурт,пирог,груша"
+categories_str = "фрукты,фрукты,молочные,выпечка,молочные,овощи,овощи,молочные,выпечка,фрукты"
+
+# Создайте два списка значений
+products = products_str.split(',')
+categories = categories_str.split(',')
+
+# С помощью функций dict() и zip() создайте словарь
+product_category = dict(zip(products, categories))
+
+# Выведем словарь на экран
+print(product_category)
+
+
+
+-- Задание 9 из 9
+
+# Исходный словарь продуктов и категорий
+product_category = {
+    'яблоко': 'фрукты',
+    'банан': 'фрукты',
+    'молоко': 'молочные',
+    'хлеб': 'выпечка',
+    'сыр': 'молочные',
+    'помидор': 'овощи',
+    'картошка': 'овощи',
+    'йогурт': 'молочные',
+    'груша': 'фрукты'
+}
+
+# Замените ключ 'картошка' на 'картофель' с помощью метода pop()
+product_category['картофель'] = product_category.pop('картошка')
+
+# Создайте список vegetable_products, содержащий все продукты категории 'овощи'
+vegetable_products = []
+for product, category in product_category.items():
+    if category == 'овощи':
+        vegetable_products.append(product)
+       
+print(f"Продукты категории 'овощи': {vegetable_products}")
